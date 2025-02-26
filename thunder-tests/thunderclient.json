@@ -1,0 +1,136 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "MoiTech API Tests",
+  "dateExported": "2024-01-01T12:00:00.000Z",
+  "version": "1.1",
+  "folders": [
+    {
+      "name": "Authentication",
+      "containerId": "",
+      "created": "2024-01-01T12:00:00.000Z",
+      "sortNum": 10000
+    },
+    {
+      "name": "Events",
+      "containerId": "",
+      "created": "2024-01-01T12:00:00.000Z",
+      "sortNum": 20000
+    },
+    {
+      "name": "MoyEntries",
+      "containerId": "",
+      "created": "2024-01-01T12:00:00.000Z",
+      "sortNum": 30000
+    }
+  ],
+  "requests": [
+    {
+      "_id": "auth-login",
+      "name": "Login",
+      "containerId": "Authentication",
+      "url": "http://localhost:3000/api/auth/login",
+      "method": "POST",
+      "body": {
+        "username": "admin",
+        "password": "admin123"
+      }
+    },
+    {
+      "_id": "events-list",
+      "name": "List All Events",
+      "containerId": "Events",
+      "url": "http://localhost:3000/api/events",
+      "method": "GET",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{auth_token}}"
+      }
+    },
+    {
+      "_id": "events-create",
+      "name": "Create Event",
+      "containerId": "Events",
+      "url": "http://localhost:3000/api/events",
+      "method": "POST",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{auth_token}}"
+      },
+      "body": {
+        "name": "Anand Wedding Reception",
+        "date": "2024-05-15T14:30:00",
+        "location": "Meenakshi Mahal, Madurai",
+        "eventType": "Wedding"
+      }
+    },
+    {
+      "_id": "events-get",
+      "name": "Get Event Details",
+      "containerId": "Events",
+      "url": "http://localhost:3000/api/events/1",
+      "method": "GET",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{auth_token}}"
+      }
+    },
+    {
+      "_id": "events-update",
+      "name": "Update Event",
+      "containerId": "Events",
+      "url": "http://localhost:3000/api/events/1",
+      "method": "PUT",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{auth_token}}"
+      },
+      "body": {
+        "name": "Anand & Priya Wedding Reception",
+        "date": "2024-05-15T14:30:00",
+        "location": "Meenakshi Mahal, Madurai",
+        "eventType": "Wedding"
+      }
+    },
+    {
+      "_id": "events-summary",
+      "name": "Get Event Summary",
+      "containerId": "Events",
+      "url": "http://localhost:3000/api/events/1/summary",
+      "method": "GET",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{auth_token}}"
+      }
+    },
+    {
+      "_id": "moyentries-create",
+      "name": "Add Moy Entry",
+      "containerId": "MoyEntries",
+      "url": "http://localhost:3000/api/moyentries",
+      "method": "POST",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{auth_token}}"
+      },
+      "body": {
+        "eventId": 1,
+        "contributorName": "Rajesh Kumar",
+        "mobileNumber": "9876543210",
+        "villageName": "Thirunagar",
+        "amount": 5000,
+        "remarks": "Best wishes for the couple"
+      }
+    },
+    {
+      "_id": "moyentries-list",
+      "name": "List Event Moy Entries",
+      "containerId": "MoyEntries",
+      "url": "http://localhost:3000/api/events/1/moyentries",
+      "method": "GET",
+      "auth": {
+        "type": "bearer",
+        "bearer": "{{auth_token}}"
+      }
+    }
+  ]
+}
