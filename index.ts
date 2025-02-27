@@ -5,6 +5,8 @@ import sequelize from './config/database';
 import userRoutes from './routes/user';
 import eventRoutes from './routes/event';
 import moyentryRoutes from './routes/moyentry';
+import materialEntryRoutes from './routes/materialentry';
+import financeRoutes from './routes/finance';
 
 const app = express();
 
@@ -21,6 +23,8 @@ app.get('/', (req, res) => {
 app.use('/api/users', userRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/moyentries', moyentryRoutes);
+app.use('/api/materialentries', materialEntryRoutes);
+app.use('/api/finance', financeRoutes);
 
 // Sync database
 sequelize.sync({ force: false }).then(() => {
